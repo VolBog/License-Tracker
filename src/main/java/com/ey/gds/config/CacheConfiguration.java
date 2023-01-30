@@ -43,11 +43,6 @@ public class CacheConfiguration {
     @Bean
     public JCacheManagerCustomizer cacheManagerCustomizer() {
         return cm -> {
-            createCache(cm, com.ey.gds.repository.UserRepository.USERS_BY_LOGIN_CACHE);
-            createCache(cm, com.ey.gds.repository.UserRepository.USERS_BY_EMAIL_CACHE);
-            createCache(cm, com.ey.gds.domain.User.class.getName());
-            createCache(cm, com.ey.gds.domain.Authority.class.getName());
-            createCache(cm, com.ey.gds.domain.User.class.getName() + ".authorities");
             // jhipster-needle-ehcache-add-entry
         };
     }
