@@ -1,6 +1,6 @@
 package com.ey.gds;
 
-import com.ey.gds.LicenseTrackerApp;
+import com.ey.gds.MonolithApp;
 import com.ey.gds.config.AsyncSyncConfiguration;
 import com.ey.gds.config.EmbeddedSQL;
 import java.lang.annotation.ElementType;
@@ -15,7 +15,7 @@ import org.springframework.test.annotation.DirtiesContext;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = { LicenseTrackerApp.class, AsyncSyncConfiguration.class })
+@SpringBootTest(classes = { MonolithApp.class, AsyncSyncConfiguration.class })
 @EmbeddedSQL
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public @interface IntegrationTest {
