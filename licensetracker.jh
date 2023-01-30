@@ -1,0 +1,58 @@
+application {
+  config {
+    baseName monolith,
+    applicationType monolith,
+    packageName com.ey.gds,
+    authenticationType jwt,
+    databaseType postgresql,
+    devDatabaseType h2Disk,
+    prodDatabaseType postgresql,
+    buildTool maven,
+    clientFramework react
+  }
+}
+
+entity User {
+  username String required,
+  password String required,
+  email String required,
+  firstName String required,
+  lastName String required
+}
+
+entity Provider {
+  name String required,
+  address String required
+}
+
+entity LicenseType {
+  type String required
+}
+
+entity License {
+  version String required,
+  availability Boolean required,
+  provider Provider required,
+  type LicenseType required
+}
+
+entity UserLicense {
+  startDate ZonedDateTime required,
+  endDate ZonedDateTime required,
+  user User required,
+  license License required
+}
+
+entity Request {
+  requestDate ZonedDateTime required,
+  status String required,
+  user User required,
+  license License required
+}
+
+relationship OneToMany {
+  Provider{licenses} to License
+  LicenseType{licenses} to License
+  User{userLicenses} to UserLicense
+  License{requests} to Request
+}
